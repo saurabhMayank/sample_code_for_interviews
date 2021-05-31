@@ -1,171 +1,124 @@
-// A complete working C++ program to demonstrate
-// all insertion methods on Linked List
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-// A linked list node
-class Node {
-	public:
-	int data;
-	Node *next;
+// Making a node struct containing a data int and a pointer
+// to another node
+struct Node { 
+  int data; 
+  Node *next; 
 };
 
-/* Given a reference (pointer to pointer)
-to the head of a list and an int, inserts
-a new node on the front of the list. */
-void push(Node** head_ref, int new_data)
-{
-	/* 1. allocate node */
-	Node* new_node = new Node();
+class LinkedList {
 
-	/* 2. put in the data */
-	new_node->data = new_data;
+  // Head pointer
+  Node* head;
 
-	/* 3. Make next of new node as head */
-	new_node->next = (*head_ref);
-
-	/* 4. move the head to point to the new node */
-	(*head_ref) = new_node;
-}
-
-/* Given a node prev_node, insert a new node after the given
-prev_node */
-void insertAfter(Node* prev_node, int new_data)
-{
-	/*1. check if the given prev_node is NULL */
-	if (prev_node == NULL)
-	{
-		cout<<"the given previous node cannot be NULL";
-		return;
-	}
-
-	/* 2. allocate new node */
-	Node* new_node = new Node();
-
-	/* 3. put in the data */
-	new_node->data = new_data;
-
-	/* 4. Make next of new node as next of prev_node */
-	new_node->next = prev_node->next;
-
-	/* 5. move the next of prev_node as new_node */
-	prev_node->next = new_node;
-}
-
-/* Given a reference (pointer to pointer) to the head
-of a list and an int, appends a new node at the end */
-void append(Node** head_ref, int new_data)
-{
-	/* 1. allocate node */
-	Node* new_node = new Node();
-
-	Node *last = *head_ref; /* used in step 5*/
-
-	/* 2. put in the data */
-	new_node->data = new_data;
-
-	/* 3. This new node is going to be
-	the last node, so make next of
-	it as NULL*/
-	new_node->next = NULL;
-
-	/* 4. If the Linked List is empty,
-	then make the new node as head */
-	if (*head_ref == NULL)
-	{
-		*head_ref = new_node;
-		return;
-	}
-
-	/* 5. Else traverse till the last node */
-	while (last->next != NULL)
-		last = last->next;
-
-	/* 6. Change the next of last node */
-	last->next = new_node;
-	return;
-}
-
-// Given a reference (pointer to pointer)
-// to the head of a list and a key, deletes
-// the first occurrence of key in linked list
-void deleteNode(Node** head_ref, int key) {
-     
-    // Store head node
-    Node* temp = *head_ref;
-    Node* prev = NULL;
-     
-    // If head node itself holds
-    // the key to be deleted
-    if (temp != NULL && temp->data == key)
-    {
-        *head_ref = temp->next; // Changed head
-        delete temp;            // free old head
-        return;
+  public:
+    // default constructor. Initializing head pointer
+    LinkedList() {
+      head = NULL;
     }
- 
-    // Else Search for the key to be deleted,
-    // keep track of the previous node as we
-    // need to change 'prev->next' */
-      else
-    {
-    while (temp != NULL && temp->data != key)
-    {
-        prev = temp;
+
+    // inserting elements (At start of the list)
+    void insert(int val) {
+      // make a new node
+      Node* new_node = new Node;
+      new_node->data = val;
+      new_node->next = NULL;
+
+      // If list is empty, make the new node, the head
+      if (head == NULL)
+        head = new_node;
+      // else, make the new_node the head and its next, the previous
+      // head
+      else {
+        new_node->next = head;
+        head = new_node;
+      }
+    }
+
+    // loop over the list. return true if element found
+    bool search(int val) {
+      Node* temp = head;
+      while(temp != NULL){
+        if (temp->data == val)
+          return true;
         temp = temp->next;
+      }
+      return false;
     }
- 
-    // If key was not present in linked list
-    if (temp == NULL)
+
+    
+    void remove(int val) {
+      // If the head is to be deleted
+      if (head->data == val) {
+        delete head;
+        head = head->next;
         return;
- 
-    // Unlink the node from linked list
-    prev->next = temp->next;
- 
-    // Free memory
-    delete temp;
+      }
+
+      // If there is only one element in the list
+      if (head->next == NULL) {
+        // If the head is to be deleted. Assign null to the head
+        if (head->data == val){
+          delete head;
+          head = NULL;
+          return;
+        }
+        // else print, value not found
+        cout << "Value not found!" << endl;
+        return;
+      }
+
+      // Else loop over the list and search for the node to delete
+      Node* temp = head;
+      while(temp->next!= NULL) {
+        // When node is found, delete the node and modify the pointers
+        if (temp->next->data == val) {
+          Node* temp_ptr = temp->next->next;
+          delete temp->next;
+          temp->next = temp_ptr;
+          return;
+        }
+        temp = temp->next;
+      }
+
+      // Else, the value was neve in the list
+      cout << "Value not found" << endl;
     }
-}
 
-// This function prints contents of
-// linked list starting from head
-void printList(Node *node)
-{
-	while (node != NULL)
-	{
-		cout<<" "<<node->data;
-		node = node->next;
-	}
-}
+    void display() {
+      Node* temp = head;
+      while(temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+      }
+      cout << endl;
+    }
+};
 
-/* Driver code*/
-int main()
-{
-	/* Start with the empty list */
-	Node* head = NULL;
-	
-	// Insert 6. So linked list becomes 6->NULL
-	append(&head, 6);
-	
-	// Insert 7 at the beginning.
-	// So linked list becomes 7->6->NULL
-	push(&head, 7);
-	
-	// Insert 1 at the beginning.
-	// So linked list becomes 1->7->6->NULL
-	push(&head, 1);
-	
-	// Insert 4 at the end. So
-	// linked list becomes 1->7->6->4->NULL
-	append(&head, 4);
-	
-	// Insert 8, after 7. So linked
-	// list becomes 1->7->8->6->4->NULL
-	insertAfter(head->next, 8);
-	
-	cout<<"Created Linked list is: ";
-	printList(head);
-	
-	return 0;
-}
+int main() {
+  
+  LinkedList l;
+  // inserting elements
+  l.insert(6);
+  l.insert(9);
+  l.insert(1);
+  l.insert(3);
+  l.insert(7);
+  cout << "Current Linked List: ";
+  l.display();
 
+  cout << "Deleting 1: ";
+  l.remove(1);
+  l.display();
+
+  cout << "Deleting 13: ";
+  l.remove(13);
+
+  cout << "Searching for 7: ";
+  cout << l.search(7) << endl;
+
+  cout << "Searching for 13: ";
+  cout << l.search(13) << endl;
+}
