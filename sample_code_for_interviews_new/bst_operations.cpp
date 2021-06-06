@@ -77,6 +77,68 @@ class BST {
         print2D(r -> left, space); // Process left child  7
     }
 
+    void printPreOrder(TreeNode* root){
+        if(root == NULL){
+            return;
+        }
+        cout << root->value << " ";
+        printPreOrder(root->left);
+        printPreOrder(root->right);
+    }
+
+    void printInOrder(TreeNode* root){
+        if(root == NULL){
+            return;
+        }
+        printInOrder(root->left);
+        cout << root->value << " ";
+        printInOrder(root->right);
+    }
+
+    void printPostOrder(TreeNode* root){
+        if(root == NULL){
+            return;
+        }
+        printPostOrder(root->left);
+        printPostOrder(root->right);
+        cout << root->value << " ";
+    }
+
+    TreeNode* search(int val) {
+        if(root == NULL){
+            return root;
+        } else {
+            TreeNode* temp = root;
+            while(temp != NULL){
+                if(val == temp->value){
+                    return temp;
+                } else if(val < temp->value){
+                    temp = temp->left;
+                } else {
+                    temp = temp->right;
+                }
+            }
+            return NULL;
+        }
+    }
+
+    int height(TreeNode* root){
+        if(root == NULL){
+            return -1;
+        } else {
+            int lheight = height(root->left);
+            int rheight = height(root->right);
+            // adding 1 to take into account the current 1
+            // instead of if else we could also do
+            // max(lheight, rheight)+1
+            if(lheight > rheight) {
+                return lheight+1;
+            } else {
+                return rheight+1;
+            }
+        }
+    }
+
 };
 
 
@@ -91,6 +153,7 @@ int main(){
         cout << "3. Delete Node" << endl;
         cout << "4. Print/Traversal BST values" << endl;
         cout << "5. Clear Screen" << endl;
+        cout << "6. Height of the tree " << endl;
         cout << "0. Exit Program" << endl;
 
         TreeNode* new_node = new TreeNode();
@@ -110,8 +173,16 @@ int main(){
                 cout << endl;
                 break;
             case 2:
-                cout << "Search Node" << endl;
+                cout << "Enter the value to search a node" << endl;
                 // Insertion Code
+                int value;
+                cin >> value;
+                new_node = obj.search(value);
+                if(new_node != NULL){
+                    cout << "Found the value" << endl;
+                } else {
+                    cout << "Not Found" << endl;
+                }
                 break;
             case 3:
                 cout << "Delete Node" << endl;
@@ -122,11 +193,22 @@ int main(){
                 cout << "Print/Traversal BST values" << endl;
                 // Insertion Code
                 obj.print2D(obj.root, 5);
+                cout << endl;
+                obj.printPreOrder(obj.root);
+                cout << endl;
+                obj.printInOrder(obj.root);
+                cout << endl;
+                obj.printPostOrder(obj.root);
+                cout << endl;
                 break;
             case 5:
                 system("clear");
                 // Insertion Code
                 break;
+            case 6:
+                int htVal;
+                htVal = obj.height(obj.root);
+                cout << "Height of the tree = " << htVal << endl;
             default:
                 cout << "Enter Proper Option Number"<< endl ;
         }
