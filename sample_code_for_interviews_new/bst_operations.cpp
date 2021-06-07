@@ -139,6 +139,25 @@ class BST {
         }
     }
 
+
+    void printLevelOrderBfs(TreeNode* root){
+        int h= height(root);
+        for(int i =0; i<=h; ++i){
+            printGivenLevel(root, i);
+        }
+    }
+
+    void printGivenLevel(TreeNode* root, int level){
+        if(root == NULL) {
+            return;
+        } else if(level == 0) {
+            cout << root->value << " ";
+        } else {
+            printGivenLevel(root->left, level-1);
+            printGivenLevel(root->right, level-1);
+        }
+    }
+
 };
 
 
@@ -199,6 +218,9 @@ int main(){
                 obj.printInOrder(obj.root);
                 cout << endl;
                 obj.printPostOrder(obj.root);
+                cout << endl;
+                cout << " ---------Level Order Traversal----------------" << endl;
+                obj.printLevelOrderBfs(obj.root);
                 cout << endl;
                 break;
             case 5:
