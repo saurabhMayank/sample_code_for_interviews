@@ -46,18 +46,16 @@ class BST {
                 if(new_node->value == temp->value){
                     cout << "This value has been inserted, insert another value" << endl;
                     return; // duplicates are not allowed
-                } else if((new_node->value < temp->value) &&
-                        (temp->left == NULL)) {
-                        temp->left = new_node;
-                        cout <<"Value Inserted at left" << endl;
-                        break;
+                } else if((new_node->value < temp->value) && (temp->left == NULL)) {
+                    temp->left = new_node;
+                    cout <<"Value Inserted at left"<< endl;
+                    break;
                 } else if(new_node->value < temp->value) {
                     temp = temp->left;
-                } else if((new_node->value > temp->value) &&
-                    temp->right == NULL) {
-                        temp->right = new_node;
-                        cout <<"Value Inserted at right" << endl;
-                        break;
+                } else if((new_node->value > temp->value) && (temp->right == NULL)) {
+                    temp->right = new_node;
+                    cout <<"Value Inserted at right"<< endl;
+                    break;
                 } else {
                     temp = temp->right;
                 }
@@ -158,6 +156,47 @@ class BST {
         }
     }
 
+
+    TreeNode* deleteNode(TreeNode* r, int v) {
+        TreeNode* temp;
+        if(r == NULL){
+            return r;
+        } else if(v < r->value){
+            r->left = deleteNode(r->left, v);
+        } else if(v > r->value){
+            r->right = deleteNode(r->right, v);
+        } else {
+            // May have 1 child or no chuld
+            // child can be in r->right
+            if(r->left == NULL){
+                temp = r->right;
+                delete r;
+                return temp;
+            } else if(r->right == NULL){
+                // Left is not null here, because previous condition violated
+                // so this is the condition of having 1 child
+
+                temp = r->left;
+                delete r;
+                return temp;
+            } else {
+                temp = minValueNode(r->right);
+                r->value = temp->value;
+                // delete the duplicate node
+                r->right = deleteNode(r->right, temp->value);
+            }
+        }
+        return r;
+    }
+
+    TreeNode* minValueNode(TreeNode* r){
+        TreeNode* curr = r;
+        while(curr != NULL){
+            curr = curr->left;
+        }
+        return curr;
+    }
+
 };
 
 
@@ -204,8 +243,16 @@ int main(){
                 }
                 break;
             case 3:
-                cout << "Delete Node" << endl;
-                // Insertion Code
+                cout << "DELETE" << endl;
+                cout << "Enter VALUE of TREE NODE to DELETE in BST: ";
+                cin >> val;
+                new_node = obj.search(val);
+                if (new_node != NULL) {
+                    obj.deleteNode(obj.root, val);
+                    cout << "Value Deleted" << endl;
+                } else {
+                    cout << "Value NOT found" << endl;
+                }
                 break;
             
             case 4:
