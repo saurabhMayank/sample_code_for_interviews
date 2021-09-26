@@ -1,5 +1,6 @@
 #include<iostream>
 #define SPACE 10
+// #include <bits/stdc++.h>
 
 using namespace std;
 class TreeNode {
@@ -83,7 +84,10 @@ class BST {
         printPreOrder(root->left);
         printPreOrder(root->right);
     }
-
+    
+    // In order traversal results in printing the tree values in
+    // increasing order
+    // very helpful in questions
     void printInOrder(TreeNode* root){
         if(root == NULL){
             return;
