@@ -1,0 +1,65 @@
+// function
+int solve(vector<int> &A, const int &k) {
+	int n = A.size();
+	int i = 0, j = 0, sum = 0;
+	int mx = INT_MIN;
+	while (j < n) {
+		sum += A[j];
+		if (sum < k) {
+			j++;
+		} else if (sum == k) {
+			mx = max(mx, j - i + 1);
+			j++;
+		} else if (sum > k) {
+			while (sum > k) {
+				sum = sum - A[i];
+				i++;
+			}
+			j++;
+		}
+	}
+	return mx;
+}
+
+// Psuedocode with explanation
+
+input => arr, k
+k = sum
+ques => Largest subarr whose sum is equal to k
+
+wndw_sum = 0
+wndw_strt = 0
+wndw_end = arr.size()-1
+max_subarr_size = INT_MIN;
+
+while(wndw_end < arr.size()){
+    wndw_sum = wndw_sum + arr[wndw_end]
+
+    if(wndw_sum < k){
+        wndw_end++
+    }else if(wndw_sum == k){
+        // window size nikaalenge
+        if((wndw_end-wndw_strt+1 ) > max_subarr_size){
+            max_subarr_size = subarr_size
+        }
+        wndw_end++
+    }    
+    else if(wndw_sum > k){
+        // remove the calculation
+        // Ab ye cheez dhyaan dene waali hain yahaan pe ki
+        // variable size window mein hm window ke start se elements tab
+        // nikaalne hain jab hmaara hmaara window jo fixed condition exceed kar jaae
+        // Tab tak hm window ke start se elments nikaale jab tak window ke elements
+        // given fixed condition se less ya equal na ho jaae
+
+        while(wndw_sum > K){
+            wndw_sum = wndw_sum - arr[wndw_strt]
+            // tab tak window start ko aage badha raho jab tab
+            // wo wndw sum ko K se chota na kar de
+            wndw_strt++
+        }
+     wndw_end++
+    }
+
+}
+
