@@ -1,0 +1,33 @@
+str []:"aabacbebebe"
+K = 3
+
+int start = 0
+int end = 0
+int curr_count = 0
+int max_count = 0
+unordered_map<char, int> mp
+while(end < str.size()){
+    // calculations
+    if(mp.find(str[end]) != mp.end()){
+        mp[str[end]]++
+    }else {
+        mp[str[end]] = 1
+    }
+
+    if(mp.size() < K){
+        end++
+    } else if(mp.size() == K){
+        curr_count = (end-start+1)
+        max_count = max(curr_count, max_count)
+        end++
+    } else if(mp.size() > K){
+        while(mp.size() > k){
+            mp[str[start]]--;
+            if(mp[str[start]] == 0){
+                mp.erase[str[start]]
+            }
+            start++
+        }
+        end++
+    }
+}
