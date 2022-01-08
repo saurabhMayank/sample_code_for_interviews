@@ -1,0 +1,58 @@
+// Largest substring with no  repeating chars
+// largest substring ka size return kar dena hain
+str = "pwwkew"
+
+// Largest substring with no repeating chars 
+// is a different way to say that Largest substring with all unique chars
+
+
+int start = 0
+int end = 0
+int curr_win = 0;
+int max_win = 0;
+
+unordered_map<str, int>mp;
+
+
+while(end < str.size()){
+    // calculations
+    if(mp.find(str[end]) != mp.end()){
+        mp[str[end]]++
+    } else {
+        mp[str[end]] = 1
+    }
+
+    // substring will only have all unique chars
+    // when the window size containing the elements
+    // will be equal to the map.size() which represents
+    // all unique chars in the window
+    if(mp.size() == (end - start + 1)){
+        curr_win = (end - start + 1)
+        max_win = max(max_win, curr_win)
+        end++;
+    } else if(mp.size() < (end - start + 1)){
+        // if map size is less than window size
+        // this means all the chars in the window
+        // are not unique
+        // some chars must be repeating
+
+        // PS - One more important thing
+        // In this question, map size cannot be greater than the window size
+        // This is because, if all the chars are unique in the window then
+        // map size will be equal to the window size, else there will be repeating chars
+        // in which case map size will only be lesser than the window size 
+        // There will no condition for this ques where map size can exceed window size
+
+        while(mp.size() < (end - start + 1)){
+            mp[str[start]]--;
+            if( mp[str[start]] == 0){
+                mp.erase(str[start]])
+            }
+            start++
+        }
+
+        end++
+    }
+}
+
+return max_win
