@@ -1,0 +1,17 @@
+// identifying problems of stack
+
+1)Obviously the question will mostly involve arrays. Majorly, not always.
+2) The question can of strings, linklist, trees also where stack can optimize the solution, but Majorly
+ques will be of array.
+3) If the brute force solution is of TC => O(n^2) and inner loop is dependent on outer loop. Inner loop is a function of the outer loop.
+ex => 
+for(int i = 0; i<n; ++i)
+ for(int j=0; j<i; ++j)
+  
+  So here j is dependent on i.
+  Similarly inner loop can of these forms also
+  j -> 0 to i j++
+  j -> i to 0 j--
+  j -> i to n j++
+
+If these are the conditions of the problems, there is a very high chance that the problem will be optimized using stack concept
