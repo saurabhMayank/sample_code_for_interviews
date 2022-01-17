@@ -13,5 +13,7 @@ for(int i = 0; i<n; ++i)
   j -> 0 to i j++
   j -> i to 0 j--
   j -> i to n j++
+  
+  Jis direction mein tumhe baar baar j loop chalaana pad rha hain uski ulti direction mein traverse karke stack ka use karke time optimize kar do
 
 If these are the conditions of the problems, there is a very high chance that the problem will be optimized using stack concept
