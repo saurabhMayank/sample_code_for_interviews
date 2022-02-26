@@ -37,6 +37,11 @@ class BST {
         }
     }
     
+    // insertion in binary tree takes logn time
+    // because at every juncture, we divide the search space into half 
+    // based on the property of the BST
+    // so if we have to insert n nodes in the BST
+    // the TC will be O(nlgn)
     void insertNode(TreeNode* new_node){
         if(root == NULL){
             root = new_node;
