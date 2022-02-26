@@ -42,6 +42,8 @@ class BST {
     // based on the property of the BST
     // so if we have to insert n nodes in the BST
     // the TC will be O(nlgn)
+    
+    // iterative implementation of insert node
     void insertNode(TreeNode* new_node){
         if(root == NULL){
             root = new_node;
@@ -68,6 +70,29 @@ class BST {
             }
         }
     }
+    
+    // recursive implementation of insert node
+//     BST(int value) {
+//     this->value = value;
+//     left = nullptr;
+//     right = nullptr;
+//   }
+
+//   void insert(int value) {
+//     if (value < this->value) {
+//       if (left == nullptr) {
+//         left = new BST(value);
+//       } else {
+//         left->insert(value);
+//       }
+//     } else {
+//       if (right == nullptr) {
+//         right = new BST(value);
+//       } else {
+//         right->insert(value);
+//       }
+//     }
+//   }
 
     void print2D(TreeNode * r, int space) {
         if (r == NULL) // Base case  1
