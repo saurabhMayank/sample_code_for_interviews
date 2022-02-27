@@ -54,6 +54,8 @@ class BST {
                 if(new_node->value == temp->value){
                     cout << "This value has been inserted, insert another value" << endl;
                     return; // duplicates are not allowed
+                    // If we allow duplicates in the BST
+                    // then  it should be go in the right side of BST
                 } else if((new_node->value < temp->value) && (temp->left == NULL)) {
                     temp->left = new_node;
                     cout <<"Value Inserted at left"<< endl;
