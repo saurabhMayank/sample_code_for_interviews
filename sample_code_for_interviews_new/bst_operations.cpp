@@ -159,6 +159,9 @@ class BST {
             return NULL;
         }
     }
+    
+    
+    // Leaf node is the 0th Level and the level beneath leaf node is -1th level
 
     int height(TreeNode* root){
         if(root == NULL){
@@ -175,6 +178,18 @@ class BST {
                 return rheight+1;
             }
         }
+    }
+    
+    // One more version for calculating height of the tree
+    int heightSecondApproach(TreeNode* root){
+        if(root == NULL){
+            return -1;
+        }
+        
+        int leftHt = heightSecondApproach(root->left) + 1;
+        int rightHt = heightSecondApproach(root->right) + 1;
+        
+        return leftHt>rightHt?leftHt:rightHt;
     }
 
 
