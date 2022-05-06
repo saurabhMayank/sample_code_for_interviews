@@ -65,6 +65,31 @@ class heap{
                 return;
             }
         }
+    }
+    
+    // pass elements in this heapify function (n/2 to 0)
+    // traverse array to right and pass values in this
+    void heapify(int arr, int n, int i){
+        //treat every element as largest of that immediate tree
+        int largest = i;
+        int left = 2*i;
+        int right = 2*i + 1;
         
+        if(left < n && arr[largest] < arr[left]){
+            largest = left;
+        }
+        
+        
+        if(right < n && arr[largest] < arr[right]){
+            largest = right;
+        }
+        
+        //means it is updated in the above ifs, largest is pointing to the right position
+        // so replace the element
+        if(largest !=i){
+            swap(arr[largest], arr[i]);
+            // check now ki aur swaps ki zaroorat hain
+            heapify(arr, n, i);
+        }
     }
 }
