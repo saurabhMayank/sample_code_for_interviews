@@ -1,8 +1,6 @@
 #include<iostream>
 using namespace std;
 
-
-
 class heap{
     public:
     int arr[100];
@@ -55,10 +53,11 @@ class heap{
             int leftIndex = 2*i;
             int rightIndex = 2*i+1;
             
-            if(leftIndex < size && arr[i] < arr[leftIndex]){
+            // 1 based indexing mein leftIndex can be equal of size, 0 based indexing mein less hona zaroori hain
+            if(leftIndex <= size && arr[i] < arr[leftIndex]){
                 swap(arr[i], arr[leftIndex]);
                 i = leftIndex;
-            }else if(rightIndex < size && arr[i] < arr[rightIndex]){
+            }else if(rightIndex <= size && arr[i] < arr[rightIndex]){
                 swap(arr[i], arr[rightIndex]);
                 i = rightIndex;
             }else{
@@ -66,6 +65,24 @@ class heap{
             }
         }
     }
+    
+    void build_maxheap (int Arr[ ]){
+        for(int i = N/2 ; i >= 1 ; i-- ){
+            heapify (Arr,n, i) ;
+        }
+    }
+    
+    void heap_sort(int Arr[ ]){
+        int heap_size = N;
+        build_maxheap(Arr);
+        for(int i = N; i>=2 ; i-- ){
+            swap(Arr[ 1 ], Arr[ i ]);
+            heap_size = heap_size-1;
+            max_heapify(Arr, heap_size, 1);
+        }
+    }
+    
+    
     
     // pass elements in this heapify function (n/2 to 0)
     // traverse array to right and pass values in this
@@ -78,7 +95,6 @@ class heap{
         if(left < n && arr[largest] < arr[left]){
             largest = left;
         }
-        
         
         if(right < n && arr[largest] < arr[right]){
             largest = right;
