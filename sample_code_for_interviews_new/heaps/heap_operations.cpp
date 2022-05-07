@@ -92,11 +92,12 @@ class heap{
         int left = 2*i;
         int right = 2*i + 1;
         
-        if(left < n && arr[largest] < arr[left]){
+        // 1 based indexing mein leftIndex can be equal of size, 0 based indexing mein less hona zaroori hain
+        if(left <= n && arr[largest] < arr[left]){
             largest = left;
         }
         
-        if(right < n && arr[largest] < arr[right]){
+        if(right <= n && arr[largest] < arr[right]){
             largest = right;
         }
         
