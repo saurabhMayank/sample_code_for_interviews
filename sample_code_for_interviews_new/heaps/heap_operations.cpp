@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class heap{
@@ -109,4 +110,32 @@ class heap{
             heapify(arr, n, i);
         }
     }
+    
+    
+    // priority queue implementation below
+    
+    // max heap
+    priority_queue<int> pq;
+    
+    pq.push(4);
+    pq.push(2);
+    pq.push(5);
+    pq.push(3);
+    
+    // it will rearrage elements internally
+    // to put max element on top -> done through heap insertion code 
+    // TC -> O(logn)
+   
+    
+    
+    // syntax for creating min_heap
+    priority_queue<int, vector<int>, greater<int>> min_heap;
+    min_heap.push(4);
+    min_heap.push(2);
+    min_heap.push(5);
+    min_heap.push(3);
+    
+    // it will rearrage elements internally
+    // to put minimum element on top -> done through heap insertion code 
+    // TC -> O(logn)
 }
