@@ -51,3 +51,13 @@ int 01_knapsack(vector<int> wts, vector<int> val, int wt_limit, int n){
       return output_3;
     }
 }
+
+
+// Bottom Up approach is also simple
+// Har step I will calculate the output and pass in recursion call
+// When I hit the base case => I can just return the output.
+// In the recursion code => after the two function calls 
+// we check which output is max of the two and we return the output
+// after each function call.
+// when wt[i] < W, then do two function calls
+// else only do one function call.
