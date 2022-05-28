@@ -2,7 +2,7 @@
 // n = 100
 // W = 1000
 
-int dp[100][1000];
+int dp[101][1001];
 memset(dp, -1, sizeof(dp));
 
 int 01_knapsack(vector<int> w, vector<int> val, int W, int n){
@@ -20,7 +20,7 @@ int 01_knapsack(vector<int> w, vector<int> val, int W, int n){
     
     // choose the output
     int output_1 = output;
-    output_1 = val[n]+ 01_knapsack(w, val, W-w[n], n-1);
+    output_1 = val[n-1]+ 01_knapsack(w, val, W-w[n-1], n-1);
     
     // don't choose the output
     int output_2 = output;
