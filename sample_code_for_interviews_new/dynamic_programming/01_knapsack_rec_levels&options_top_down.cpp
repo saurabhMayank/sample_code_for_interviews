@@ -5,8 +5,7 @@
 // because we need max profit
 
 
-int output = 0;
-int 01_knapsack(vector<int> w, vector<int> val, int W, int n, int output){
+int 01_knapsack(vector<int> w, vector<int> val, int W, int n){
   if(n == 0 || W == 0){
     return 0;
   }
@@ -26,8 +25,7 @@ int 01_knapsack(vector<int> w, vector<int> val, int W, int n, int output){
     return max(output_1, output_2);
   }else {
     // only one function call
-    
-    output = 01_knapsack(w, val, W, n-1,  output);
+    output = 01_knapsack(w, val, W, n-1);
     return output;
   }
 }
