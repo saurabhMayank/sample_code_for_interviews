@@ -18,9 +18,9 @@ int knapsack_dp_tabulation(vector<int> wt, vector<int> val, int n, int W){
   
    for(int i = 1; i < n+1; ++i){
     for(int j = 1; j< W+1; ++j){
-       if(wt[i-1] <= W){
+       if(wt[i-1] <= j){
          dp[i][j] = max((val[i-1] + dp[i-1][j-wt[i-1]]), dp[i-1][j]);
-       } else if(wt[i-1] > W){
+       } else if(wt[i-1] > j){
          dp[i][j] = dp[i-1][j];
        }
     }
