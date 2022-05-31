@@ -3,6 +3,10 @@ using namespace std;
  
 // Returns true if there is a subset
 // of set[] with sum equal to given sum
+
+// return boolean value stating if subset can be formed or not
+// whose sum is the Sum given.
+
 bool isSubsetSum(int set[], int n, int sum)
 {
    
