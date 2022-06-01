@@ -15,9 +15,9 @@ int subset_sum_problem_dp(int n, int sum, vector<int> arr){
   for(int i = 0;i<n+1; ++i){
     for(int j = 0; j<sum+1; ++j){
       if (i == 0){
-        return True;
+        dp[i][j]= True;
       } else if (j == 0){
-        return False;
+        dp[i][j]= False;
       }
   }
     
