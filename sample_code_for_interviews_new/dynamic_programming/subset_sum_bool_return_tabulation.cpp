@@ -25,6 +25,8 @@ int subset_sum_problem_dp(int n, int sum, vector<int> arr){
     for(int j = 1; j<sum+1; ++j){
       if(arr[i-1] <= j){
         dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j];
+      } else {
+        dp[i][j] = dp[i-1][j];
       }
     }
   }
