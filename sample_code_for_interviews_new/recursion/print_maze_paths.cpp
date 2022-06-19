@@ -9,7 +9,10 @@ void printMazePaths(int sr, int sc, int dr, int dc, string psf){
         return;
     }
     
-    
+    // if calls mein hm boundary lagaa de 
+    // ki agar sc <= dc tak hi horizontal movement
+    // ki calls lage => uske baad na lage => toh kaafi extra recursion calls
+    // bach jaaenge negative basecases waale
     printMazePaths(sr, sc+1, dr, dc, psf+"h");
     printMazePaths(sr+1, sc, dr, dc, psf+"v");
 }
