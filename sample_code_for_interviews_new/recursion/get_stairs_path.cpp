@@ -20,6 +20,8 @@ vector<string> get_stair_paths(int n) {
   vector<string>ans;
   for (int step = 1; step <= 3; step++) {
     vector<string> small_ans = get_stair_paths(n - step);
+    // Euler Tree mein saare steps khatam hone ke baad phir 
+    // wo tree ke post area mein aata hain jahaan se way construct hoke return hota hain
     for (int j = 0; j < small_ans.size(); j++) {
       string ss = small_ans[j];
       char no_of_steps = (char)(step + '0');
