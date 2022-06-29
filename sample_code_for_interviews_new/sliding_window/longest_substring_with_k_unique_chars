@@ -4,6 +4,9 @@ K = 3
 int start = 0
 int end = 0
 int curr_count = 0
+// in this if needed to return the substring instead of the max length
+// then store the indexes of the start and end pointer of the window 
+// initialize a vector of PAIRS where first element of PAIR -> start ptr and second element of PAIR -> end ptr
 int max_count = 0
 unordered_map<char, int> mp
 while(end < str.size()){
@@ -18,6 +21,8 @@ while(end < str.size()){
         end++
     } else if(mp.size() == K){
         curr_count = (end-start+1)
+        // if substring is needed instead of max length
+        // then push the indexes PAIRS in the vector if last indexes length < current indexes length
         max_count = max(curr_count, max_count)
         end++
     } else if(mp.size() > K){
