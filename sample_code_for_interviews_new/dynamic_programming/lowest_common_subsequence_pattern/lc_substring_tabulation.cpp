@@ -22,13 +22,12 @@ int lc_substring(string X, string Y, int n, int m) {
       
       if(X[i-1] == Y[j-1]){
         dp[i][j] = 1 + dp[i-1][j-1];
+        // store the longest substring count at this point
+       // in the count
+       count = max(dp[i][j], count);
       } else if(X[i-1] != Y[j-1]){
         dp[i][j] = 0;
       }
-      
-      // store the longest substring count at this point
-      // in the count
-      count = max(dp[i][j], count);
     }
   }
   
