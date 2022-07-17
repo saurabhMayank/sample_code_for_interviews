@@ -7,7 +7,6 @@ arr = [40, 20, 30, 10, 30]
 
 int i = 1;
 int j = n-1;
-int min_va
 
 int mcm_recursive(int i , int j , vector<int> arr){
   
