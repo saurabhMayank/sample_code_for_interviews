@@ -28,5 +28,5 @@ int main(){
     int n;
     cin >> n;
     vector<string> all_paths
-    printStairPaths(n, "");
+    printStairPaths(n, "", all_paths);
 }
