@@ -18,7 +18,8 @@ void printStairPaths(int n, string psf, vector<string> &all_paths){
     
     
     for(int i = 1; i<= max_steps; ++i){
-        printStairPaths(n-i, psf+to_string(i), all_paths);
+        string paths_1 = psf+to_string(i);
+        printStairPaths(n-i, paths_1, all_paths);
     }
     return;
 }
