@@ -32,6 +32,6 @@ int rod_cutting_problem_tabulation(vector<int> length, vector<int> pieces, int N
     }
   }
   
-  return dp[n][W];
+  return dp[n][len_arr_size];
   
 }
