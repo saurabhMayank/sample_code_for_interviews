@@ -24,6 +24,21 @@ int mcm_recursive(int i , int j , vector<int> arr){
    // now the recursive flow of control will again come back to line number 26 in one of the recursion calls
    // So now min will not be initialized again, just its value will keep getting updated
   
+   // Jab K = 1 (First Partition) uske lie poore recursion calls complete ho jaaenge
+   // toh temp_ans = (20*30*30 + 30*10*30 + 40*20*30)
+   // min = (20*30*30 + 30*10*30 + 40*20*30)
+   
+   // Now K = 2 ke lie temp_ans compute hoga => Poora recursion call chalega
+   // Initial min(for k=1 partition ka) toh hain apne pass `min` mein stored after K = 1 got completed
+   // uske baad K=2 ke lie process shuru
+  
+   // Issi tarah loop ke pichle iteration se jo min compute hua wo phir iss iteration ke temp_ans se compare hoga
+   // nayaa min calculate ho jaaega
+   
+   // Last mein jo final min nikal ke aayega => wo phir hmaara min cost hoga
+   
+  
+  
   
    int min = Integer.MAX_VALUE;
   for(int k =i; k<=j-1; ++k){
