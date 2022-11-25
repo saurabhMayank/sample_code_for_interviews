@@ -44,6 +44,19 @@ public:
         // dp matrix will store the min cost for a particular i and j value
         // for an specific array size => which contains the dimensions of matrices
         // min cost is given
+        
+        // recursion concepts will be same here as in the recursive code
+        // Just the DP matrix is added here
+        
+        // For Example Input => arr = [40, 20, 30, 10, 30]
+        
+        // When recursion call is for arr, i =3 and j = 4 
+        // temp_ans calculated
+        // min set
+        // so for dp[3][4] = min stored
+        // Now again if dp[3][4] is called => directly ans be returned
+        
+        
         dp[i][j] = min_val;
         return dp[i][j];
     }
