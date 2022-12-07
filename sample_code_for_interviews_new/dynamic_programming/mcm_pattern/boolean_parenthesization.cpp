@@ -1,5 +1,9 @@
 
 // operators => &, ^, |
+
+// isTrue == 1 => Evaluate exp to True
+// isTrue == 0 => Evaluate exp to False
+
 int find(string &s,int i ,int j , int istrue){
 
   if(i>j) return 0;
@@ -13,10 +17,10 @@ int find(string &s,int i ,int j , int istrue){
   int ans =0;
   for(int k=i+1; k<j;k+=2)
   {
-      int lt = find(s,i,k-1,1,dp);
-      int lf = find(s,i,k-1,0,dp);
-      int rt = find(s,k+1,j,1,dp);
-      int rf = find(s,k+1,j,0,dp);
+      int lt = find(s,i,k-1,1);
+      int lf = find(s,i,k-1,0);
+      int rt = find(s,k+1,j,1);
+      int rf = find(s,k+1,j,0);
 
 
       if(s[k] == '&')
