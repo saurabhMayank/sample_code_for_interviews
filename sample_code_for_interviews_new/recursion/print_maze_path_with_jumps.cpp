@@ -8,6 +8,8 @@ using namespace std;
             cout << psf << endl;
             return;
         }else if(sr > dr || sc > dc){
+            // case not allowed
+            // sr and sc always be less then dr and dc
             return;
         }
         
@@ -20,30 +22,19 @@ using namespace std;
         // and max Step <= dc hona chahiye
         // wo hmaara dest hain
         // usse aage nahin badhna
-         // i+sc can be just put i
-        // as we handled in the base case
-        // any cases where user goes out of the maze
+   
         for(int i = 1; i+sc<= dc; ++i){
             string step = "h" + to_string(i);
             printMazePaths(sr, sc+i,dr, dc, psf+step);
         }
         
         // vertical movement
-        // i+sr can be just put i
-        // as we handled in the base case
-        // any cases where user goes out of the maze
         for(int i = 1; i+sr<= dr; ++i){
             string step = "v" + to_string(i);
             printMazePaths(sr+i, sc, dr, dc, psf+step);
         }
         
         // diagonal movement
-          // i+sr can be just put i
-        // as we handled in the base case
-        // any cases where user goes out of the maze
-          // i+sc can be just put i
-        // as we handled in the base case
-        // any cases where user goes out of the maze
         for(int i = 1; i+sc<= dc && i+sr<=dr; ++i){
             string step = "d" + to_string(i);
             printMazePaths(sr+i, sc+i, dr, dc, psf+step);
