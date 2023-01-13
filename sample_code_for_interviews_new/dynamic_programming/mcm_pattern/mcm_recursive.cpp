@@ -42,7 +42,7 @@ int mcm_recursive(int i , int j , vector<int> arr){
   
    int min = Integer.MAX_VALUE;
   for(int k =i; k<=j-1; ++k){
-    int temp_ans = mcm_recursive(arr, i, k) + mcm_recursive(arr, k + 1, j) + (arr[i - 1] * arr[k] * arr[j]);
+    int temp_ans = mcm_recursive(i, k, arr) + mcm_recursive(k + 1, j, arr) + (arr[i - 1] * arr[k] * arr[j]);
     if (min > tempAns)
         min = tempAns;
      }
