@@ -1,11 +1,6 @@
-//{ Driver Code Starts
-// Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
-
-// } Driver Code Ends
-// User function Template for C++
 
 class Solution{
 public:
@@ -16,6 +11,7 @@ public:
     // are the variables i and j which represent array size
     // they will represent the size of dp matrix
     int dp[101][101];
+    // int min_val = INT_MAX;
     int matrixMultiplication(int N, int arr[])
     {
         memset(dp, -1, sizeof(dp));
@@ -26,57 +22,29 @@ public:
     }
     
     int solve(int arr[], int i, int j){
-        if(i>=j){
-            return 0;
-        }
+        if(i>=j){ // 1
+            return 0; //2
+        } // 3
         
-        if(dp[i][j] != -1){
-            return dp[i][j];
-        }
+        if(dp[i][j] != -1){ // 4
+            return dp[i][j]; // 5
+        } // 6
         
-        int min_val = INT_MAX;
+        int min_val = INT_MAX; // 7
         
-        for(int k=i; k<=j-1; ++k){
-            int temp_ans = solve(arr, i, k) + solve(arr, k+1, j) + arr[i-1]*arr[k]*arr[j];
-            min_val = min(temp_ans, min_val);
-        }
+        for(int k=i; k<=j-1; ++k){ // 8
+            int temp_ans = solve(arr, i, k) + solve(arr, k+1, j) + arr[i-1]*arr[k]*arr[j]; // 9
+            cout << solve(arr, i, k) <<","<<solve(arr, k+1, j)<<","<<arr[i-1]*arr[k]*arr[j] << ","; 
+            cout << temp_ans << "=bc=";
+            cout << min_val << "=ac="; 
+            min_val = min(temp_ans, min_val); //10
+            cout << min_val << endl;
+        } // 11
         
         // dp matrix will store the min cost for a particular i and j value
         // for an specific array size => which contains the dimensions of matrices
         // min cost is given
-        
-        // recursion concepts will be same here as in the recursive code
-        // Just the DP matrix is added here
-        
-        // For Example Input => arr = [40, 20, 30, 10, 30]
-        
-        // When recursion call is for arr, i =3 and j = 4 
-        // temp_ans calculated
-        // min set
-        // so for dp[3][4] = min stored
-        // Now again if dp[3][4] is called => directly ans be returned
-        
-        
-        dp[i][j] = min_val;
-        return dp[i][j];
+        dp[i][j] = min_val; // 12
+        return dp[i][j]; // 13
     }
 };
-
-//{ Driver Code Starts.
-
-int main(){
-    int t;
-    cin>>t;
-    while(t--){
-        int N;
-        cin>>N;
-        int arr[N];
-        for(int i = 0;i < N;i++)
-            cin>>arr[i];
-        
-        Solution ob;
-        cout<<ob.matrixMultiplication(N, arr)<<endl;
-    }
-    return 0;
-}
-// } Driver Code Ends
