@@ -32,6 +32,8 @@ public:
         
         int min_val = INT_MAX; // 7
         
+        // recursive concept explained in the recursive code
+        
         for(int k=i; k<=j-1; ++k){ // 8
             int temp_ans = solve(arr, i, k) + solve(arr, k+1, j) + arr[i-1]*arr[k]*arr[j]; // 9
             cout << solve(arr, i, k) <<","<<solve(arr, k+1, j)<<","<<arr[i-1]*arr[k]*arr[j] << ","; 
@@ -44,6 +46,11 @@ public:
         // dp matrix will store the min cost for a particular i and j value
         // for an specific array size => which contains the dimensions of matrices
         // min cost is given
+        
+        // When code will recursively go 
+        // to solve a subproblem 
+        // then after the subproblem is solved when loop ends
+        // ans will stored in the dp matrix -> which is used further in the problem
         dp[i][j] = min_val; // 12
         return dp[i][j]; // 13
     }
