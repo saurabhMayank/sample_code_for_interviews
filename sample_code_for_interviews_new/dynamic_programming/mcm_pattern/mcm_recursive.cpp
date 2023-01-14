@@ -13,29 +13,37 @@ int mcm_recursive(int i , int j , vector<int> arr){
   if(i>=j){
     return 0;
   }
-   // min value is initialized here rather than globally because 
-   // if u carefully observe the recursion code
-   // Line 20 is the recursion logic
-   // So we will start from valid recursion parameters and keep going into recursion logic till
-   // base case is hit
-   // So first for mcm_recursive(arr, i, k) -> base case will hit and flow of control will come back to line number 26
-   // then for mcm_recursive(arr, k + 1, j) -> base case will hit and flow of control will come back to line number 26
-   // after that temp_ans will be calculated -> this temp ans will be compared to min and then returned
-   // now the recursive flow of control will again come back to line number 26 in one of the recursion calls
-   // So now min will not be initialized again, just its value will keep getting updated
   
-   // Jab K = 1 (First Partition) uske lie poore recursion calls complete ho jaaenge
-   // toh temp_ans = (20*30*30 + 30*10*30 + 40*20*30)
-   // min = (20*30*30 + 30*10*30 + 40*20*30)
-   
-   // Now K = 2 ke lie temp_ans compute hoga => Poora recursion call chalega
-   // Initial min(for k=1 partition ka) toh hain apne pass `min` mein stored after K = 1 got completed
-   // uske baad K=2 ke lie process shuru
+  // The GOAL -> is to find cost of each partition and then find minimum from it
+  // when 1 loop iteration completes, cost of 1 paritition
+  // For Loop changes the parititions with every iteration
   
-   // Issi tarah loop ke pichle iteration se jo min compute hua wo phir iss iteration ke temp_ans se compare hoga
-   // nayaa min calculate ho jaaega
-   
-   // Last mein jo final min nikal ke aayega => wo phir hmaara min cost hoga
+  // In every iteration 
+  // To calculate the temp_ans => i.e. cost of multiplying matrix using that partition
+  
+  // There are recursion calls
+  // which give the result of a portion of temp_ans
+  // mcm_recursive(i, k, arr) -> 1 recursion call, mcm_recursive(k + 1, j, arr) -> 2nd recursion call
+  
+  // Inn recursion calls ke lie -> wapis se function call hoga
+  // Jo Inka result hoga wo ek portion ka result hoga temp_ans ka
+  
+  // Both the portions ke result aa jaaenge toh hme unhe add karke and (arr[i - 1] * arr[k] * arr[j]) add karke => temp_ans compute kar lenge
+  // Joki -> for k=1 partition ke lie -> Aise hi baaki valid partitions ke lie temp_ans compute hoga
+  
+  // Ab min -> jo variable hain -> wo mcm_recursive function ke andar initialise hoga na ki Globally
+  // Iska reason hain ki
+  // Har Iteration ke baad jo cost aaya, usse compare karke min value store karwaao
+  
+  // But agar hm -> min variable ko globally declare kar denge -> toh recursive functions mein jo temp_ans nikaalta hain
+  // joki ek portion ka result hain -> wo jaake global min mein store ho jaaega
+  // wo poore partition ka result nahin hain -> sirf ek portion ka hain.
+  // toh wrong min value store hone lagega
+  
+  // But if we intialise min inside mcm_recursive function before the loop then 
+  // for loop ke ek iteration ke baad jo temp_ans hoga wo min mein store ho jaaega
+  // that min will be stored and use to compare temp_ans in the 2nd iteration of for loop and so on.
+  
    
   
   
