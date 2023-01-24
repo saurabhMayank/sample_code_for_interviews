@@ -11,7 +11,7 @@ int 01_knapsack(vector<int> w, vector<int> val, int W, int n){
   }
   
   //if wt < W
-  if(w < W){
+  if(w[n-1] < W){
     // two function calls
     
     // choose the output
