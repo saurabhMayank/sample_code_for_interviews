@@ -15,17 +15,17 @@ int 01_knapsack(vector<int> w, vector<int> val, int W, int n){
     // two function calls
     
     // choose the output
-    int output_1 = output;
-    output_1 = val[n-1]+ 01_knapsack(w, val, W-w[n-1], n-1);
+//     int output_1 = output;
+    int output_1 = val[n-1]+ 01_knapsack(w, val, W-w[n-1], n-1);
     
     // don't choose the output
-    int output_2 = output;
-    output_2 = 01_knapsack(w, val, W, n-1);
+//     int output_2 = output;
+    int output_2 = 01_knapsack(w, val, W, n-1);
     
     return max(output_1, output_2);
   }else {
     // only one function call
-    output = 01_knapsack(w, val, W, n-1);
+    int output = 01_knapsack(w, val, W, n-1);
     return output;
   }
   
