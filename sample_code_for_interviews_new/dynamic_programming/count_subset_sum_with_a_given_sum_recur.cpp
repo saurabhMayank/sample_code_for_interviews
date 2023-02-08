@@ -10,12 +10,14 @@
 using namespace std;
 
 int count_subsets_with_a_given_sum(vector<int>arr, int sum, int n){
-  if(sum == 0){
-    return 1;
-  }
   if(n==0){
     return 0;
   }
+   
+  if(sum == 0){
+    return 1;
+  }
+  
   
   if(arr[n-1] > sum){
       
