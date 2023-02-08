@@ -17,7 +17,6 @@ int count_subsets_with_a_given_sum(vector<int>arr, int sum, int n){
     return 0;
   }
   
-  int total_sum = 0;
   if(arr[n-1] > sum){
       
     int not_taken = count_subsets_with_a_given_sum(arr, sum, n-1);
