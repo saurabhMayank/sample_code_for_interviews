@@ -24,7 +24,7 @@ class Solution{
         
         // len array of rod not given
         // construct length
-       
+        // int len = sizeof(price)/sizeof(price[0]);
         // int length[len];
         
         // size of Rod and length of price array same
@@ -32,48 +32,40 @@ class Solution{
         int len = n;
         int length[len];
         
-        int price_size = sizeof(price)/sizeof(price[0]);
-        cout << "---price_size----" << price_size << endl;
-        
         for(int i = 0; i<len; ++i){
             length[i] = i+1;
         }
         
-        // n => size of rod
-        int dp[n+1][len+1];
-        
-        
-        for(int i = 0; i<=n; ++i){
-            for(int j = 0; j<=len; ++j){
-                if(i == 0 || j == 0){
-                    dp[i][j] = 0;
+         int t[n + 1][len + 1];
+        for (int i = 0; i < n + 1; i++)
+        {
+            for (int j = 0; j < len + 1; j++)
+            {
+                if (i == 0 || j == 0)
+                    t[i][j] = 0;
+            }
+        }
+    
+        // Step 2: Iterative code
+        for (int i = 1; i < n + 1; i++){
+            for (int j = 1; j < len + 1; j++){
+                if(length[i - 1] <= j){
+                    // taken
+                    int op1 = price[i - 1] + t[i][j - length[i - 1]];
+                    // not taken
+                    int op2 = t[i - 1][j];
+                    t[i][j] = max(op1, op2);
+                    
+                }else {
+                    t[i][j] = t[i - 1][j];
                 }
             }
         }
-        
-        for(int i = 1; i<=n; ++i){
-            for(int j = 1; j<=len; ++j){
-                if(length[j-1] <= i){
-                    
-                    //taken
-                    int taken = price[j-1] + dp[i-length[j-1]][j];
-                    
-                    
-                    //not taken
-                    // consider item processed, piece processed
-                    int not_taken = dp[i][j-1];
-                    
-                    dp[i][j] = max(taken, not_taken);
-                } else {
-                   dp[i][j] = dp[i][j-1];
-                }
-            }
-        }
-        
-        return dp[n][len];
+    
+        // Step 3: Return
+        return t[n][len];
     }
 };
-
 //{ Driver Code Starts.
 
 int main() {
