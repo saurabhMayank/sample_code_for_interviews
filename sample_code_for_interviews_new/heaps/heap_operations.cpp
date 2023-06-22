@@ -49,6 +49,7 @@ class heap{
         // instead of swapping the first element from last and deleting the last element
         // put the last element at the 1st index
         arr[1] = arr[size];
+        // decrement the last index -> extra element is deleted
         size--;
         
         // move the current root node to its correct position
