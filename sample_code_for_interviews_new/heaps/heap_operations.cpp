@@ -21,6 +21,7 @@ class heap{
       int index = size;
       
       // step 1=> inserted at last
+      
       arr[index] = val;
       
       // step 2 and step 3
@@ -45,6 +46,8 @@ class heap{
         }
         
         // put last element at index 1
+        // instead of swapping the first element from last and deleting the last element
+        // put the last element at the 1st index
         arr[1] = arr[size];
         size--;
         
