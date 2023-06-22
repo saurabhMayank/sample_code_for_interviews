@@ -15,7 +15,8 @@ class heap{
   
     // max heap
     void insert(int val){
-      // data is inserted from 1st index
+      // data needs to be inserted at last index
+      // incrementing the size and then inserting that data at incremented index
       size++;
       int index = size;
       
