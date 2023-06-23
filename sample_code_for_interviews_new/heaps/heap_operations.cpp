@@ -110,14 +110,28 @@ class heap{
         if(right <= n && arr[largest] < arr[right]){
             largest = right;
         }
-        
-        //means it is updated in the above ifs, largest is pointing to the right position
-        // so replace the element
+
+        // largest != i -> Initially largest was set to i
+        // means it is updated in the above ifs, largest is pointing to the correct position
+        // so swap the element with the current ith element
         if(largest !=i){
+            // swap elements at largest and i index
+            // so element at i index -> goes to largest index
+            // element at largest index -> goes to i index
+            // now at i -> correct element has come
+            // for ex -> In the array -> in the notes
+            // swapping 54 and 55. 
+            // 54 at index 1
+            // 55 at index 3
+            // now swapped -> 55 comes at 1, 54 goes at 3
             swap(arr[largest], arr[i]);
+            
             // check now ki aur swaps ki zaroorat hain
-            heapify(arr, n, i);
+            // check 54 which is at index 3 is at the right position or does it need more swaps
+            // from its children
+            heapify(arr, n, largest);
         }
+        return;
     }
     
     
