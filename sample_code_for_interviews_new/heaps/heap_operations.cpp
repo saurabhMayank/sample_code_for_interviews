@@ -77,15 +77,27 @@ class heap{
             heapify (Arr,n, i) ;
         }
     }
-    
+
+    // dry run it once properly
     void heap_sort(int Arr[ ]){
         int heap_size = N;
+
+        // build max heap -> so that greatest element is on top
         build_maxheap(Arr);
-        for(int i = N; i>=2 ; i-- ){
-            swap(Arr[ 1 ], Arr[ i ]);
+
+        while(heap_size > 1){
+            // swapping 1st and last element
+            swap(Arr[ 1 ], Arr[heap_size]);
+            
+            // size is decremented -> as last element is already at correct position
+            // need to do shifting of elements between indexes 1 to heap_size-1 to put current root element in array
+            // at its correct position
             heap_size = heap_size-1;
-            max_heapify(Arr, heap_size, 1);
+            heapify(Arr, heap_size, 1);
         }
+
+        // heap is sorted
+        // print the sorted order array implementation of heap
     }
     
     
@@ -101,15 +113,31 @@ class heap{
         
         int left = 2*i;
         int right = 2*i + 1;
+
+
         
         // 1 based indexing mein leftIndex can be equal of size, 0 based indexing mein less hona zaroori hain
+
+        // heap array -> (i)(largest)45, (left)50 , (right)55
+
+        // if current largest element is less than left element
+        // then assign largest to left index
         if(left <= n && arr[largest] < arr[left]){
             largest = left;
         }
-        
+
+         // after above if
+         // heap array -> (i)45, (largest)50 , (right)55
+
+        // if current largest is less than right element
+        // then assign largest to right index
         if(right <= n && arr[largest] < arr[right]){
             largest = right;
         }
+
+        // after above if
+        // heap array -> (i)45, 50 , (largest)55
+       
 
         // largest != i -> Initially largest was set to i
         // means it is updated in the above ifs, largest is pointing to the correct position
