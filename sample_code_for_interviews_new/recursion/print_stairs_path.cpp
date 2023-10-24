@@ -9,6 +9,8 @@ int max_steps = 3;
 void printStairPaths(int n, string psf, vector<string> &all_paths){
     
     if(n == 0){
+        // destination reached
+        // append the path in vector
         cout << psf << endl;
         all_paths.push_back(psf)
         return;
