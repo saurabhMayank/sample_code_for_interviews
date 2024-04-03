@@ -29,6 +29,11 @@ int searchInNearlySortedArray(vector<int> arr, int target){
   }
 
   // better way to structure code
+
+  // Case 0 -> Cover the cases of input_size == 1 and input_size == 2
+  // they can be done in constant time without any extra time addition
+  // then go inside the while loop
+
   // Case 1 -> mid can be either of the middle element
   // in that case can compare with current and both left and right element
 
@@ -37,6 +42,9 @@ int searchInNearlySortedArray(vector<int> arr, int target){
 
   // Case 3 -> mid can be (n-1)th element
   // in that case -> right boudary already reached, compare with current and left(i-1) element
+
+  // First write the code in this structure and then if needed minimize the code by combining conditions
+  // in this way code will be clear and -> u will not miss an edgecase
   
   while(low<=high){
     int mid = low+(high-low)/2;
