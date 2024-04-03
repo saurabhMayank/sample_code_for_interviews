@@ -28,7 +28,7 @@ int searchInNearlySortedArray(vector<int> arr, int target){
     }
   }
 
-  // better way to structure code
+  // better way to structure code in Binary Search ques
 
   // Case 0 -> Cover the cases of input_size == 1 and input_size == 2
   // they can be done in constant time without any extra time addition
