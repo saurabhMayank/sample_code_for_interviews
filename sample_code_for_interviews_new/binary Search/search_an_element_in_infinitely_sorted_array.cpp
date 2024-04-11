@@ -30,7 +30,7 @@ int findPos(vector<int> arr, int target){
     // but sorted search space chota hoga
     // That is the tradeoff
     high = 2* high;
-    val = arr[high]
+    high_val = arr[high]
   }
   
   // normal binary search ka code hoga iss func mein
